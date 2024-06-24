@@ -10,6 +10,7 @@ namespace RubicsCube.Scripts
 	internal class MovingWalls
 	{
 		RubikColors cube = RubikColors.Instance;
+		//Movings
 		public void TurnFrontRight(RubikColors cube)
 		{
 			RotateFrontClockwise(cube);
@@ -49,6 +50,14 @@ namespace RubicsCube.Scripts
 		public void TurnBackLeft(RubikColors cube)
 		{
 			RotateBackCounterClockwise(cube);
+		}
+		public void TurnDownRight(RubikColors cube)
+		{
+			RotateDownClockwise(cube);
+		}
+		public void TurnDownLeft(RubikColors cube)
+		{
+			RotateDownCounterClockwise(cube);
 		}
 		private void RotateSideLeft(char[] side)
 		{
@@ -297,6 +306,50 @@ namespace RubicsCube.Scripts
 			cube.RIGHT[2] = temp[0];
 			cube.RIGHT[5] = temp[1];
 			cube.RIGHT[8] = temp[2];
+		}
+		//Turn Down Right
+		private void RotateDownClockwise(RubikColors cube)
+		{
+			RotateSideRight(cube.DOWN);
+			char[] temp = { cube.FRONT[6], cube.FRONT[7], cube.FRONT[8] };
+
+			cube.FRONT[6] = cube.LEFT[6];
+			cube.FRONT[7] = cube.LEFT[7];
+			cube.FRONT[8] = cube.LEFT[8];
+
+			cube.LEFT[6] = cube.BACK[6];
+			cube.LEFT[7] = cube.BACK[7];
+			cube.LEFT[8] = cube.BACK[8];
+
+			cube.BACK[6] = cube.RIGHT[6];
+			cube.BACK[7] = cube.RIGHT[7];
+			cube.BACK[8] = cube.RIGHT[8];
+
+			cube.RIGHT[6] = temp[0];
+			cube.RIGHT[7] = temp[1];
+			cube.RIGHT[8] = temp[2];
+		}
+		//Turn Down Left
+		private void RotateDownCounterClockwise(RubikColors cube)
+		{
+			RotateSideLeft(cube.DOWN);
+			char[] temp = { cube.FRONT[6], cube.FRONT[7], cube.FRONT[8] };
+
+			cube.FRONT[6] = cube.RIGHT[6];
+			cube.FRONT[7] = cube.RIGHT[7];
+			cube.FRONT[8] = cube.RIGHT[8];
+
+			cube.RIGHT[6] = cube.BACK[6];
+			cube.RIGHT[7] = cube.BACK[7];
+			cube.RIGHT[8] = cube.BACK[8];
+
+			cube.BACK[6] = cube.LEFT[6];
+			cube.BACK[7] = cube.LEFT[7];
+			cube.BACK[8] = cube.LEFT[8];
+
+			cube.LEFT[6] = temp[0];
+			cube.LEFT[7] = temp[1];
+			cube.LEFT[8] = temp[2];
 		}
 	}
 }
