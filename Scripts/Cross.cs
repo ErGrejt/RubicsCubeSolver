@@ -12,7 +12,9 @@ namespace RubicsCube.Scripts
 		private RubikColors cube;
 		private MovingWalls _walls;
 		private char rightCenter, leftCenter, downCenter, upCenter, frontCenter, backCenter;
-		
+		private string lastMove;
+		private string firstMove;
+
 		public Cross()
 		{
 			cube = RubikColors.Instance;
@@ -45,7 +47,8 @@ namespace RubicsCube.Scripts
 					}
 					else if (cube.BACK[i] == 'w')
 					{
-						MoveWhiteEdgeToTopFromBack(i);
+						char sidecolor = GetAdjacentColor(cube, "BACK", i);
+						MoveWhiteEdgeToTopFromBack(i, sidecolor);
 					}
 					else if (cube.RIGHT[i] == 'w')
 					{
@@ -54,11 +57,13 @@ namespace RubicsCube.Scripts
 					}
 					else if (cube.LEFT[i] == 'w')
 					{
-						MoveWhiteEdgeToTopFromLeft(i);
+						char sidecolor = GetAdjacentColor(cube, "LEFT", i);
+						MoveWhiteEdgeToTopFromLeft(i, sidecolor);
 					}
 					else if (cube.DOWN[i] == 'w')
 					{
-						MoveWhiteEdgeToTopFromDown(i);
+						char sidecolor = GetAdjacentColor(cube, "DOWN", i);
+						MoveWhiteEdgeToTopFromDown(i, sidecolor);
 					}
 				}
 				whiteCrossOnTop = (cube.UP[1] == 'w' && cube.UP[3] == 'w' && cube.UP[5] == 'w' && cube.UP[7] == 'w');
@@ -175,7 +180,7 @@ namespace RubicsCube.Scripts
 		}
 		private void MoveWhiteEdgeToTopFromRight(int position, char sidecolor)
 		{
-			switch(position)
+			switch (position)
 			{
 				case 1:
 					switch (sidecolor)
@@ -282,65 +287,324 @@ namespace RubicsCube.Scripts
 					break;
 			}
 		}
-		private void MoveWhiteEdgeToTopFromLeft(int position) 
+		private void MoveWhiteEdgeToTopFromLeft(int position, char sidecolor) 
 		{ 
 			switch(position) 
 			{
 				case 1:
-					_walls.TurnLeftRight(cube);
-					_walls.TurnFrontRight(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+						case 'r':
+							_walls.TurnLeftRight(cube);
+							_walls.TurnFrontRight(cube);
+							break;
+						case 'o':
+							_walls.TurnLeftLeft(cube);
+							_walls.TurnBackLeft(cube);
+							break;
+					}
 					break;
 				case 3:
-					_walls.TurnBackLeft(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnUpLeft(cube);
+							_walls.TurnBackRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+						case 'g':
+							_walls.TurnUpRight(cube);
+							_walls.TurnBackLeft(cube);
+							break;
+						case 'r':
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnBackLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'o':
+							_walls.TurnBackRight(cube);
+							break;
+					}
 					break;
 				case 5:
-					_walls.TurnFrontRight(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnUpRight(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnUpLeft(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+						case 'r':
+							_walls.TurnFrontRight(cube);
+							break;
+						case 'o':
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+					}
 					break;
 				case 7:
-					_walls.TurnLeftRight(cube);
-					_walls.TurnBackLeft(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnLeftLeft(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnLeftRight(cube);
+							break;
+						case 'g':
+							_walls.TurnLeftLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+						case 'r':
+							_walls.TurnLeftLeft(cube);
+							_walls.TurnFrontRight(cube);
+							break;
+						case 'o':
+							_walls.TurnLeftRight(cube);
+							_walls.TurnBackLeft(cube);
+							break;
+					}
 					break;
 			} 
 		}
-		private void MoveWhiteEdgeToTopFromBack(int position)
+		private void MoveWhiteEdgeToTopFromBack(int position, char sidecolor)
 		{
 			switch (position)
 			{
 				case 1:
-					_walls.TurnBackRight(cube);
-					_walls.TurnLeftRight(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnBackLeft(cube);
+							_walls.TurnRightLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnBackRight(cube);
+							_walls.TurnLeftRight(cube);
+							break;
+						case 'r':
+							_walls.TurnBackRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'o':
+							_walls.TurnBackRight(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+					}
 					break;
 				case 3:
-					_walls.TurnRightLeft(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnRightLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'r':
+							_walls.TurnUpLeft(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnUpRight(cube);
+							break;
+						case 'o':
+							_walls.TurnUpRight(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+					}
 					break;
 				case 5:
-					_walls.TurnLeftRight(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+						case 'g':
+							_walls.TurnLeftRight(cube);
+							break;
+						case 'r':
+							_walls.TurnUpRight(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'o':
+							_walls.TurnUpLeft(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+					}
 					break;
 				case 7:
-					_walls.TurnBackRight(cube);
-					_walls.TurnRightLeft(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnBackLeft(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnBackRight(cube);
+							break;
+						case 'g':
+							_walls.TurnBackLeft(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnBackRight(cube);
+							break;
+						case 'r':
+							_walls.TurnBackRight(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnBackLeft(cube);
+							break;
+						case 'o':
+							_walls.TurnBackRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+					}
 					break;
 			}
 		}
-		private void MoveWhiteEdgeToTopFromDown(int position)
+		private void MoveWhiteEdgeToTopFromDown(int position, char sidecolor)
 		{
 			switch (position)
 			{
 				case 1:
-					_walls.TurnFrontRight(cube);
-					_walls.TurnFrontRight(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnDownRight(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnRightLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnDownLeft(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnLeftRight(cube);
+							break;
+						case 'r':
+							_walls.TurnFrontRight(cube);
+							_walls.TurnFrontRight(cube);
+							break;
+						case 'o':
+							_walls.TurnDownRight(cube);
+							_walls.TurnDownRight(cube);
+							_walls.TurnBackRight(cube);
+							_walls.TurnBackRight(cube);
+							break;
+					}
 					break;
 				case 3:
-					_walls.TurnLeftRight(cube);
-					_walls.TurnLeftRight(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnDownRight(cube);
+							_walls.TurnDownRight(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnRightLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnLeftRight(cube);
+							_walls.TurnLeftRight(cube);
+							break;
+						case 'r':
+							_walls.TurnDownRight(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnFrontRight(cube);
+							break;
+						case 'o':
+							_walls.TurnDownLeft(cube);
+							_walls.TurnBackRight(cube);
+							_walls.TurnBackRight(cube);
+							break;
+					}
 					break;
 				case 5:
-					_walls.TurnRightLeft(cube);
-					_walls.TurnRightLeft(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnRightLeft(cube);
+							_walls.TurnRightLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnDownRight(cube);
+							_walls.TurnDownRight(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnLeftRight(cube);
+							break;
+						case 'r':
+							_walls.TurnDownLeft(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnFrontRight(cube);
+							break;
+						case 'o':
+							_walls.TurnDownRight(cube);
+							_walls.TurnBackRight(cube);
+							_walls.TurnBackRight(cube);
+							break;
+					}
 					break;
 				case 7:
-					_walls.TurnBackLeft(cube);
-					_walls.TurnBackLeft(cube);
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnDownLeft(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnRightLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnDownRight(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnLeftRight(cube);
+							break;
+						case 'r':
+							_walls.TurnDownRight(cube);
+							_walls.TurnDownRight(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnFrontRight(cube);
+							break;
+						case 'o':
+							_walls.TurnBackRight(cube);
+							_walls.TurnBackRight(cube);
+							break;
+					}
 					break;
 			}
 		}
@@ -429,6 +693,83 @@ namespace RubicsCube.Scripts
 			}
 			return '1';
 		}
+		private bool LastMoveCheck(string lastMove, string firstMove)
+		{
+			if (lastMove == null) return false;
+			switch(firstMove)
+			{
+				case "TurnUpRight":
+					return lastMove == "TurnUpLeft" ? true : false;
+				case "TurnUpLeft":
+					return lastMove == "TurnUpRight" ? true : false;
+				case "TurnDownRight":
+					return lastMove == "TurnDownLeft" ? true : false;
+				case "TurnDownLeft":
+					return lastMove == "TurnDownRight" ? true : false;
+				case "TurnFrontRight":
+					return lastMove == "TurnFrontLeft" ? true : false;
+				case "TurnFrontLeft":
+					return lastMove == "TurnFrontRight" ? true : false;
+				case "TurnBackRight":
+					return lastMove == "TurnBackLeft" ? true : false;
+				case "TurnBackLeft":
+					return lastMove == "TurnBackRight" ? true : false;
+				case "TurnRightRight":
+					return lastMove == "TurnRightLeft" ? true : false;
+				case "TurnRightLeft":
+					return lastMove == "TurnRightRight" ? true : false;
+				case "TurnLeftRight":
+					return lastMove == "TurnLeftLeft" ? true : false;
+				case "TurnLeftLeft":
+					return lastMove == "TurnLeftRight" ? true : false;
+				default:
+					return false; 
+			}
+		}
+		private void doLastMove(string lastMove)
+		{
+			switch(lastMove)
+			{
+				case "TurnUpRight":
+					_walls.TurnUpRight(cube);
+					break;
+				case "TurnUpLeft":
+					_walls.TurnUpLeft(cube);
+					break;
+				case "TurnDownRight":
+					_walls.TurnDownRight(cube);
+					break;
+				case "TurnDownLeft":
+					_walls.TurnDownLeft(cube);
+					break;
+				case "TurnFrontRight":
+					_walls.TurnFrontRight(cube);
+					break;
+				case "TurnFrontLeft":
+					_walls.TurnFrontLeft(cube);
+					break;
+				case "TurnBackRight":
+					_walls.TurnBackRight(cube);
+					break;
+				case "TurnBackLeft":
+					_walls.TurnBackLeft(cube);
+					break;
+				case "TurnRightRight":
+					_walls.TurnRightRight(cube);
+					break;
+				case "TurnRightLeft":
+					_walls.TurnRightLeft(cube);
+					break;
+				case "TurnLeftRight":
+					_walls.TurnLeftRight(cube);
+					break;
+				case "TurnLeftLeft":
+					_walls.TurnLeftLeft(cube);
+					break;
+				default:
 
+					break;
+			}
+		}
 	}
 }
