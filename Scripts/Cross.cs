@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RubicsCube.Scripts
 {
@@ -43,7 +44,6 @@ namespace RubicsCube.Scripts
 					{
 						char sidecolor = GetAdjacentColor(cube, "FRONT", i);
 						MoveWhiteEdgeToTopFromFront(i, sidecolor);
-						
 					}
 					else if (cube.BACK[i] == 'w')
 					{
@@ -65,13 +65,128 @@ namespace RubicsCube.Scripts
 						char sidecolor = GetAdjacentColor(cube, "DOWN", i);
 						MoveWhiteEdgeToTopFromDown(i, sidecolor);
 					}
+					else if (cube.UP[i] == 'w')
+					{
+						char sidecolor = GetAdjacentColor(cube, "UP", i);
+						MoveWhiteEdgeFromTopToGoodPosition(i, sidecolor);
+					}
 				}
 				whiteCrossOnTop = (cube.UP[1] == 'w' && cube.UP[3] == 'w' && cube.UP[5] == 'w' && cube.UP[7] == 'w');
+			}
+			_walls.CountMoves();
+			Console.ReadLine();
+		}
+		private void MoveWhiteEdgeFromTopToGoodPosition(int position, char sidecolor)
+		{
+			switch(position)
+			{
+				case 1:
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnBackLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnBackRight(cube);
+							_walls.TurnUpRight(cube);
+							
+							break;
+						case 'g':
+							_walls.TurnBackRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnBackLeft(cube);
+							_walls.TurnUpLeft(cube);
+							
+							break;
+						case 'r':
+							_walls.TurnBackLeft(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnBackRight(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+					}
+					break;
+				case 3:
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnLeftLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'r':
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnLeftLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'o':
+							_walls.TurnLeftLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnLeftRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+					}
+					break;
+				case 5:
+					switch (sidecolor)
+					{
+						case 'g':
+							_walls.TurnRightLeft(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnRightRight(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'r':
+							_walls.TurnRightLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnRightRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+						case 'o':
+							_walls.TurnRightRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnRightLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+					}
+					break;
+				case 7:
+					switch (sidecolor)
+					{
+						case 'b':
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnFrontLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+						case 'g':
+							_walls.TurnFrontLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpRight(cube);
+							break;
+						case 'o':
+							_walls.TurnFrontRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnUpRight(cube);
+							_walls.TurnFrontLeft(cube);
+							_walls.TurnUpLeft(cube);
+							_walls.TurnUpLeft(cube);
+							break;
+					}
+					break;
 			}
 		}
 		private void MoveWhiteEdgeToTopFromFront(int position, char sidecolor)
 		{
-			switch(position)
+			switch (position)
 			{
 				case 1:
 					switch (sidecolor)
@@ -287,9 +402,9 @@ namespace RubicsCube.Scripts
 					break;
 			}
 		}
-		private void MoveWhiteEdgeToTopFromLeft(int position, char sidecolor) 
-		{ 
-			switch(position) 
+		private void MoveWhiteEdgeToTopFromLeft(int position, char sidecolor)
+		{
+			switch (position)
 			{
 				case 1:
 					switch (sidecolor)
@@ -336,7 +451,7 @@ namespace RubicsCube.Scripts
 							_walls.TurnUpLeft(cube);
 							break;
 						case 'o':
-							_walls.TurnBackRight(cube);
+							_walls.TurnBackLeft(cube);
 							break;
 					}
 					break;
@@ -391,7 +506,7 @@ namespace RubicsCube.Scripts
 							break;
 					}
 					break;
-			} 
+			}
 		}
 		private void MoveWhiteEdgeToTopFromBack(int position, char sidecolor)
 		{
@@ -768,6 +883,25 @@ namespace RubicsCube.Scripts
 					break;
 				default:
 
+					break;
+			}
+		}
+		private void WhiteCrossCorr(RubikColors cube)
+		{
+			char sidecolor = GetAdjacentColor(cube, "UP", 1);
+			switch(sidecolor)
+			{
+				case 'g':
+					_walls.TurnUpLeft(cube);
+					break;
+				case 'b':
+					_walls.TurnUpRight(cube);
+					break;
+				case 'r':
+					_walls.TurnUpRight(cube);
+					_walls.TurnUpRight(cube);
+					break;
+				case 'o':
 					break;
 			}
 		}

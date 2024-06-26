@@ -10,78 +10,95 @@ namespace RubicsCube.Scripts
 	internal class MovingWalls
 	{
 		RubikColors cube = RubikColors.Instance;
+		private int countMoves = 0;
 		//Movings
 		public void TurnFrontRight(RubikColors cube)
 		{
 			Console.WriteLine("FRONT W PRAWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateFrontClockwise(cube);
 		}
 		public void TurnFrontLeft(RubikColors cube)
 		{
 			Console.WriteLine("FRONT W LEWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateFrontCounterClockwise(cube);
 		}
 		public void TurnUpRight(RubikColors cube)
 		{
 			Console.WriteLine("UP W PRAWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateUpClockwise(cube);
 		}
 		public void TurnUpLeft(RubikColors cube)
 		{
 			Console.WriteLine("UP W LEWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateUpCounterClockwise(cube);
 		}
 		public void TurnRightRight(RubikColors cube)
 		{
 			Console.WriteLine("PRAWO W PRAWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateRightClockwise(cube);
 		}
 		public void TurnRightLeft(RubikColors cube)
 		{
 			Console.WriteLine("PRAWO W LEWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateRightCounterClockwise(cube);
 		}
 		public void TurnLeftRight(RubikColors cube)
 		{
 			Console.WriteLine("LEWO W PRAWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateLeftClockwise(cube);
 		}
 		public void TurnLeftLeft(RubikColors cube)
 		{
 			Console.WriteLine("LEWO W LEWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateLeftCounterClockwise(cube);
 		}
 		public void TurnBackRight(RubikColors cube)
 		{
 			Console.WriteLine("BACK W PRAWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateBackClockwise(cube);
 		}
 		public void TurnBackLeft(RubikColors cube)
 		{
 			Console.WriteLine("BACK W LEWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateBackCounterClockwise(cube);
 		}
 		public void TurnDownRight(RubikColors cube)
 		{
 			Console.WriteLine("DOWN W PRAWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateDownClockwise(cube);
 		}
 		public void TurnDownLeft(RubikColors cube)
 		{
 			Console.WriteLine("DOWN W LEWO");
+			countMoves++;
 			Console.ReadLine();
 			RotateDownCounterClockwise(cube);
+		}
+		public void CountMoves()
+		{
+			Console.WriteLine("Ilość ruchów: " + countMoves);
 		}
 		private void RotateSideLeft(char[] side)
 		{
