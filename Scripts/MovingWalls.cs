@@ -13,50 +13,74 @@ namespace RubicsCube.Scripts
 		//Movings
 		public void TurnFrontRight(RubikColors cube)
 		{
+			Console.WriteLine("FRONT W PRAWO");
+			Console.ReadLine();
 			RotateFrontClockwise(cube);
 		}
 		public void TurnFrontLeft(RubikColors cube)
 		{
+			Console.WriteLine("FRONT W LEWO");
+			Console.ReadLine();
 			RotateFrontCounterClockwise(cube);
 		}
 		public void TurnUpRight(RubikColors cube)
 		{
+			Console.WriteLine("UP W PRAWO");
+			Console.ReadLine();
 			RotateUpClockwise(cube);
 		}
 		public void TurnUpLeft(RubikColors cube)
 		{
+			Console.WriteLine("UP W LEWO");
+			Console.ReadLine();
 			RotateUpCounterClockwise(cube);
 		}
 		public void TurnRightRight(RubikColors cube)
 		{
+			Console.WriteLine("PRAWO W PRAWO");
+			Console.ReadLine();
 			RotateRightClockwise(cube);
 		}
 		public void TurnRightLeft(RubikColors cube)
 		{
+			Console.WriteLine("PRAWO W LEWO");
+			Console.ReadLine();
 			RotateRightCounterClockwise(cube);
 		}
 		public void TurnLeftRight(RubikColors cube)
 		{
+			Console.WriteLine("LEWO W PRAWO");
+			Console.ReadLine();
 			RotateLeftClockwise(cube);
 		}
 		public void TurnLeftLeft(RubikColors cube)
 		{
+			Console.WriteLine("LEWO W LEWO");
+			Console.ReadLine();
 			RotateLeftCounterClockwise(cube);
 		}
 		public void TurnBackRight(RubikColors cube)
 		{
+			Console.WriteLine("BACK W PRAWO");
+			Console.ReadLine();
 			RotateBackClockwise(cube);
 		}
 		public void TurnBackLeft(RubikColors cube)
 		{
+			Console.WriteLine("BACK W LEWO");
+			Console.ReadLine();
 			RotateBackCounterClockwise(cube);
 		}
 		public void TurnDownRight(RubikColors cube)
 		{
+			Console.WriteLine("DOWN W PRAWO");
+			Console.ReadLine();
 			RotateDownClockwise(cube);
 		}
 		public void TurnDownLeft(RubikColors cube)
 		{
+			Console.WriteLine("DOWN W LEWO");
+			Console.ReadLine();
 			RotateDownCounterClockwise(cube);
 		}
 		private void RotateSideLeft(char[] side)

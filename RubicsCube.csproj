@@ -46,6 +46,7 @@
     <Compile Include="Models\RubikColors.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Cross.cs" />
     <Compile Include="Scripts\InputWalls.cs" />
     <Compile Include="Scripts\MovingWalls.cs" />
   </ItemGroup>
