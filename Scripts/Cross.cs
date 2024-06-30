@@ -36,8 +36,6 @@ namespace RubicsCube.Scripts
 			bool whiteCrossOnTop = false;
 			while (!whiteCrossOnTop)
 			{
-				whiteCrossOnTop = (cube.UP[1] == 'w' && cube.UP[3] == 'w' && cube.UP[5] == 'w' && cube.UP[7] == 'w');
-
 				for (int i = 0; i < 9; i++)
 				{
 					if (cube.FRONT[i] == 'w')

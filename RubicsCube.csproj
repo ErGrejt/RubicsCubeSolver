@@ -50,6 +50,7 @@
     <Compile Include="Scripts\InputWalls.cs" />
     <Compile Include="Scripts\MovingWalls.cs" />
     <Compile Include="Scripts\SecondLayerEdges.cs" />
+    <Compile Include="Scripts\WhiteCorners.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

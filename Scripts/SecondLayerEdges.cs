@@ -1581,9 +1581,9 @@ namespace RubicsCube.Scripts
                                 _walls.TurnDownLeft(cube);
                                 _walls.TurnDownLeft(cube);
                                 _walls.TurnLeftLeft(cube);
-                                _walls.TurnFrontLeft(cube);
-                                _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontRight(cube);
+                                _walls.TurnLeftRight(cube);
+                                _walls.TurnFrontLeft(cube);
 								edges++;
 								break;
 							}
