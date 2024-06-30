@@ -114,7 +114,7 @@ namespace RubicsCube.Scripts
             Console.WriteLine(message + moves.Count);
             Console.ReadLine();
         }
-        public void WriteMovesWhiteCross(int number)
+        public void WriteMoves(int number)
         {
             RemoveMoves();
             if(number == 1)

@@ -11,6 +11,7 @@ namespace RubicsCube.Scripts
 	{
 		RubikColors cube = RubikColors.Instance;
 		MovingWalls moving = new MovingWalls();
+		private int white, red, yellow, green, blue, orange;
 		public void InputWall()
 		{
 			Console.WriteLine("Podaj kolory ściany górnej");
@@ -25,6 +26,60 @@ namespace RubicsCube.Scripts
 			GetColors(cube.RIGHT);
 			Console.WriteLine("Podaj kolor ściany lewej");
 			GetColors(cube.LEFT);
+			VerifyCubeColors(cube);
+		}
+		private void VerifyCubeColors(RubikColors cube)
+		{
+			for (int i = 0; i < 9; i++)
+			{
+				char color = cube.UP[i];
+				CheckColorChar(color);
+				color = cube.DOWN[i];
+				CheckColorChar(color);
+				color = cube.FRONT[i];
+				CheckColorChar(color);
+				color = cube.BACK[i];
+				CheckColorChar(color);
+				color = cube.RIGHT[i];
+				CheckColorChar(color);
+				color = cube.LEFT[i];
+				CheckColorChar(color);
+			}
+				if(yellow != 9 || red != 9 | white != 9 || orange != 9 || blue !=9 || green != 9)
+				{
+					yellow = 0;
+					red = 0;
+					white = 0;
+					green = 0;
+					blue = 0;
+					orange = 0;
+					Console.WriteLine("Ściany zostały błędnie wpisane, należy wpisać je od nowa");
+					Console.ReadLine();
+					InputWall();
+				}
+			
+		}
+		private void CheckColorChar(char color)
+		{
+			if(color == 'y')
+			{
+				yellow++;
+			} else if(color == 'r')
+			{
+				red++;
+			} else if(color == 'w')
+			{
+				white++;
+			} else if(color == 'o')
+			{
+				orange++;
+			} else if(color == 'b')
+			{
+				blue++;
+			} else if(color == 'g')
+			{
+				green++;
+			}
 		}
 		private void GetColors(char[] side)
 		{
@@ -36,8 +91,13 @@ namespace RubicsCube.Scripts
 					Console.WriteLine($"Podaj kolor klocka {i + 1}: ");
 					color = Console.ReadKey().KeyChar;
 					Console.WriteLine();
+					if(color == 'z')
+					{
+						i = -1;
+						break;
+					}
 				} while (!"wgrbyo".Contains(color));
-				side[i] = color;
+				if(i > -1) side[i] = color;
 			}
 		}
 		public void ReadWall(string side)

@@ -73,7 +73,7 @@ namespace RubicsCube.Scripts
 				}
 				whiteCrossOnTop = (cube.UP[1] == 'w' && cube.UP[3] == 'w' && cube.UP[5] == 'w' && cube.UP[7] == 'w');
 			}
-			_walls.WriteMovesWhiteCross(1);
+			_walls.WriteMoves(1);
 
         }
 		private void MoveWhiteEdgeFromTopToGoodPosition(int position, char sidecolor)
