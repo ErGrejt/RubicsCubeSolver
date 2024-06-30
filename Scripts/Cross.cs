@@ -73,9 +73,9 @@ namespace RubicsCube.Scripts
 				}
 				whiteCrossOnTop = (cube.UP[1] == 'w' && cube.UP[3] == 'w' && cube.UP[5] == 'w' && cube.UP[7] == 'w');
 			}
-			_walls.CountMoves();
-			Console.ReadLine();
-		}
+			_walls.WriteMovesWhiteCross(1);
+
+        }
 		private void MoveWhiteEdgeFromTopToGoodPosition(int position, char sidecolor)
 		{
 			switch(position)
@@ -723,7 +723,7 @@ namespace RubicsCube.Scripts
 					break;
 			}
 		}
-		private char GetAdjacentColor(RubikColors cube, string face, int position)
+		public char GetAdjacentColor(RubikColors cube, string face, int position)
 		{
 			switch (face)
 			{

@@ -16,6 +16,7 @@ namespace RubicsCube
 			MovingWalls moving = new MovingWalls();
 			RubikColors cube = RubikColors.Instance;
 			Cross solve = new Cross();
+			SecondLayerEdges secondLayerEdges = new SecondLayerEdges();
 			Console.WriteLine(@"Witaj w programie do układania kostki rubika!
 Najpierw musisz podać w jakim stanie jest Twoja kostka.
 Aby to zrobić musisz użyć liter w,g,b,r,y,o:
@@ -31,7 +32,8 @@ Kliknij 'enter' aby kontynuować");
 			input.InputWall();
 			Console.Clear();
 			solve.SolveWhiteCross();
-			Console.Clear();
+			secondLayerEdges.SolveEdgesSecondLayer();
+            Console.Clear();
 			input.ReadWall("FRONT");
 			Console.ReadLine();
 			Console.Clear();

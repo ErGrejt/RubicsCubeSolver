@@ -49,6 +49,7 @@
     <Compile Include="Scripts\Cross.cs" />
     <Compile Include="Scripts\InputWalls.cs" />
     <Compile Include="Scripts\MovingWalls.cs" />
+    <Compile Include="Scripts\SecondLayerEdges.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
