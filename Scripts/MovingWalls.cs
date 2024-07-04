@@ -123,7 +123,13 @@ namespace RubicsCube.Scripts
             } else if(number == 2)
             {
                 CountMoves("Ilość ruchów do ułożenia środkowych 3 krawędzi: ");
-            }
+            } else if(number == 3)
+            {
+				CountMoves("Ilość ruchów do ułożenia 3 białych narożników: ");
+			} else if(number == 0)
+            {
+				CountMoves("Poprawka krzyż: ");
+			}
             for (int i = 0; i < moves.Count; i++)
             {
                 ConsoleWLMoves(moves[i]);
@@ -182,19 +188,21 @@ namespace RubicsCube.Scripts
             {
                 if (isCanceling(moves[i], moves[i + 1]))
                 {
-                    moves.RemoveAt(i);      // Remove current move
-                    moves.RemoveAt(i);      // Remove next move
-                    i = 0;                  // Start checking from the beginning
+                    moves.RemoveAt(i);      
+                    moves.RemoveAt(i);      
+                    i = 0;                 
                 }
                 else
                 {
                     i++;
                 }
             }
-        }
+            ReplaceTripleMoves();
+
+		}
         private bool isCanceling(string move1, string move2)
         {
-            // Pary ruchów, które się wzajemnie anulują
+            
             if ((move1 == "TurnUpLeft" && move2 == "TurnUpRight") ||
                 (move1 == "TurnUpRight" && move2 == "TurnUpLeft") ||
                 (move1 == "TurnFrontLeft" && move2 == "TurnFrontRight") ||
@@ -213,7 +221,41 @@ namespace RubicsCube.Scripts
 
             return false;
         }
-        private void RotateSideLeft(char[] side)
+		private void ReplaceTripleMoves()
+		{
+			Dictionary<string, string> oppositeMoves = new Dictionary<string, string>
+	        {
+		        { "TurnUpLeft", "TurnUpRight" },
+		        { "TurnUpRight", "TurnUpLeft" },
+		        { "TurnFrontLeft", "TurnFrontRight" },
+		        { "TurnFrontRight", "TurnFrontLeft" },
+		        { "TurnDownLeft", "TurnDownRight" },
+		        { "TurnDownRight", "TurnDownLeft" },
+		        { "TurnLeftLeft", "TurnLeftRight" },
+		        { "TurnLeftRight", "TurnLeftLeft" },
+		        { "TurnRightLeft", "TurnRightRight" },
+		        { "TurnRightRight", "TurnRightLeft" },
+		        { "TurnBackLeft", "TurnBackRight" },
+		        { "TurnBackRight", "TurnBackLeft" }
+	        };
+
+			int i = 0;
+			while (i < moves.Count - 2)
+			{
+				if (moves[i] == moves[i + 1] && moves[i] == moves[i + 2])
+				{
+					moves[i] = oppositeMoves[moves[i]];  
+					moves.RemoveAt(i + 1);                
+					moves.RemoveAt(i + 1);                
+					i = 0;                                
+				}
+				else
+				{
+					i++;
+				}
+			}
+		}
+		private void RotateSideLeft(char[] side)
         {
             var temp = new char[9];
             temp[0] = side[2];

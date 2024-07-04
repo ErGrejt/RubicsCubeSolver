@@ -34,8 +34,8 @@ namespace RubicsCube.Scripts
 
         private void CheckEdges()
         {
-            bool threeedges = false;
-            while (!threeedges)
+            bool threeedges = CheckingSolvedEdges();
+			while (!threeedges)
             {
 				
                 for (int i = 0; i < 9; i++)
@@ -115,7 +115,6 @@ namespace RubicsCube.Scripts
             {
                 return false;
             }
-
         }
         private void CheckingEdgesFront(int position, char maincolor, char sidecolor)
         {
@@ -135,7 +134,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-                                edges++;
+                                
                                 break;
                             } else
                             {
@@ -146,13 +145,13 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'r':
                             if (sidecolor == 'g')
                             {
-                                edges++;
+                                
                                 break;
                             } else if(sidecolor == 'y') {
                                 break;
@@ -166,7 +165,7 @@ namespace RubicsCube.Scripts
                             _walls.TurnFrontLeft(cube);
                             _walls.TurnRightLeft(cube);
                             _walls.TurnFrontRight(cube);
-                            edges++;
+                            
                             break;
                         case 'b':
                             if (sidecolor == 'y') return;
@@ -179,7 +178,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -191,7 +190,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnFrontLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'o':
@@ -206,7 +205,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -219,7 +218,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                     }
@@ -238,7 +237,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnFrontRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -250,13 +249,13 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'r':
                             if (sidecolor == 'b')
                             {
-                                edges++;
+                                
                                 break;
                             } else if(sidecolor == 'y')
                             {
@@ -270,7 +269,7 @@ namespace RubicsCube.Scripts
                             _walls.TurnLeftLeft(cube);
                             _walls.TurnFrontLeft(cube);
                             _walls.TurnLeftRight(cube);
-                            edges++;
+                            
                             break;
                         case 'b':
                             if (sidecolor == 'y') return;
@@ -283,7 +282,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -295,7 +294,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'o':
@@ -310,7 +309,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -323,7 +322,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                     }
@@ -340,7 +339,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -350,7 +349,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'r':
@@ -361,7 +360,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-                                edges++;
+                                
                                 break;
                             } else
                             {
@@ -369,7 +368,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'b':
@@ -381,7 +380,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -391,7 +390,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'o':
@@ -404,7 +403,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -415,7 +414,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                     }
@@ -441,7 +440,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -454,7 +453,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'r':
@@ -468,7 +467,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-                                edges++;
+                                
                                 break;
                             } else
                             {
@@ -479,14 +478,14 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-                                edges++;
+                                
                             }
                             break;
                         case 'b':
                             if (sidecolor == 'y') return;
                             if (sidecolor == 'r')
                             {
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -499,7 +498,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'o':
@@ -513,7 +512,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -525,7 +524,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                     }
@@ -545,7 +544,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -558,7 +557,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'r':
@@ -572,7 +571,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -584,7 +583,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'b':
@@ -599,12 +598,12 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
                             {
-                                edges++;
+                                
                                 break;
                             }
                         case 'o':
@@ -618,7 +617,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -630,7 +629,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                     }
@@ -648,7 +647,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -659,7 +658,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'r':
@@ -672,7 +671,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -682,7 +681,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'b':
@@ -693,7 +692,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -702,7 +701,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                         case 'o':
@@ -714,7 +713,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-                                edges++;
+                                
                                 break;
                             }
                             else
@@ -724,7 +723,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-                                edges++;
+                                
                                 break;
                             }
                     }
@@ -750,12 +749,12 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
 							{
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -769,7 +768,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -781,7 +780,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 							}
 							break;
 						case 'b':
@@ -796,7 +795,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -809,7 +808,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -823,7 +822,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -835,7 +834,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -855,12 +854,12 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
 							{
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -874,7 +873,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -886,7 +885,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'b':
@@ -901,7 +900,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -914,7 +913,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -928,7 +927,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -940,7 +939,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -956,7 +955,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -965,7 +964,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -977,7 +976,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -987,7 +986,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'b':
@@ -1000,7 +999,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1011,7 +1010,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -1023,7 +1022,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1033,7 +1032,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -1058,7 +1057,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1070,7 +1069,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -1085,7 +1084,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1098,7 +1097,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 							}
 							break;
 						case 'b':
@@ -1112,7 +1111,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1124,14 +1123,14 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
 							if (sidecolor == 'y') return;
 							if (sidecolor == 'b')
 							{
-								edges++;
+								
 								break;
 							}
 							else
@@ -1144,7 +1143,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -1163,7 +1162,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1175,7 +1174,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -1190,7 +1189,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1203,7 +1202,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'b':
@@ -1217,7 +1216,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1229,7 +1228,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -1237,7 +1236,7 @@ namespace RubicsCube.Scripts
 							if (sidecolor == 'g')
 							{
 
-								edges++;
+								
 								break;
 							}
 							else
@@ -1250,7 +1249,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -1267,7 +1266,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1277,7 +1276,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -1290,7 +1289,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1301,7 +1300,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'b':
@@ -1313,7 +1312,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1323,7 +1322,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -1334,7 +1333,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1343,7 +1342,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -1365,7 +1364,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1376,7 +1375,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -1388,7 +1387,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1398,7 +1397,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-								edges++;
+								
 							}
 							break;
 						case 'b':
@@ -1411,7 +1410,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1420,7 +1419,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -1432,7 +1431,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1442,7 +1441,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);  
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -1459,7 +1458,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1469,7 +1468,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -1480,7 +1479,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1491,7 +1490,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-								edges++;
+								
 							}
 							break;
 						case 'b':
@@ -1503,7 +1502,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1513,7 +1512,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -1524,7 +1523,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1535,7 +1534,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -1552,7 +1551,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1562,7 +1561,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -1573,7 +1572,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1584,7 +1583,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'b':
@@ -1596,7 +1595,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1606,7 +1605,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -1619,7 +1618,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1628,7 +1627,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 					}
@@ -1646,7 +1645,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnLeftRight(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1655,7 +1654,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnLeftLeft(cube);
-								edges++;
+								
 								break;
 							}
 						case 'r':
@@ -1667,7 +1666,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnLeftRight(cube);
                                 _walls.TurnFrontLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1677,7 +1676,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnFrontLeft(cube);
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnFrontRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'b':
@@ -1690,7 +1689,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnFrontRight(cube);
                                 _walls.TurnRightLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1699,7 +1698,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnRightLeft(cube);
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnRightRight(cube);
-								edges++;
+								
 								break;
 							}
 						case 'o':
@@ -1711,7 +1710,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackRight(cube);
                                 _walls.TurnRightRight(cube);
                                 _walls.TurnBackLeft(cube);
-								edges++;
+								
 								break;
 							}
 							else
@@ -1721,7 +1720,7 @@ namespace RubicsCube.Scripts
                                 _walls.TurnBackLeft(cube);
                                 _walls.TurnLeftLeft(cube);
                                 _walls.TurnBackRight(cube);
-								edges++;
+								
 								break;
 							}
 					}
