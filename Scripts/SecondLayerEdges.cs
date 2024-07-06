@@ -46,35 +46,45 @@ namespace RubicsCube.Scripts
 						char maincolor = cube.DOWN[i];
 						char sidecolor = sideColor.GetAdjacentColor(cube, "DOWN", i);
 						CheckingEdgesDown(position, maincolor, sidecolor);
+						threeedges = CheckingSolvedEdges();
+						if (threeedges) break;
 					}
-                    else if (cube.BACK[i] == 'r' || cube.BACK[i] == 'b' || cube.BACK[i] == 'o' || cube.BACK[i] == 'g')
+                     if (cube.BACK[i] == 'r' || cube.BACK[i] == 'b' || cube.BACK[i] == 'o' || cube.BACK[i] == 'g')
                     {
                         int position = i;
                         char maincolor = cube.BACK[i];
                         char sidecolor = sideColor.GetAdjacentColor(cube, "BACK", i);
 						CheckingEdgesBack(position, maincolor, sidecolor);
+						threeedges = CheckingSolvedEdges();
+						if (threeedges) break;
 
 					}
-                    else if (cube.RIGHT[i] == 'r' || cube.RIGHT[i] == 'b' || cube.RIGHT[i] == 'o' || cube.RIGHT[i] == 'g')
+                     if (cube.RIGHT[i] == 'r' || cube.RIGHT[i] == 'b' || cube.RIGHT[i] == 'o' || cube.RIGHT[i] == 'g')
                     {
                         int position = i;
                         char maincolor = cube.RIGHT[i];
                         char sidecolor = sideColor.GetAdjacentColor(cube, "RIGHT", i);
                         CheckingEdgesRight(position, maincolor, sidecolor);
-                    }
-                    else if (cube.LEFT[i] == 'r' || cube.LEFT[i] == 'b' || cube.LEFT[i] == 'o' || cube.LEFT[i] == 'g')
+						threeedges = CheckingSolvedEdges();
+						if (threeedges) break;
+					}
+                     if (cube.LEFT[i] == 'r' || cube.LEFT[i] == 'b' || cube.LEFT[i] == 'o' || cube.LEFT[i] == 'g')
                     {
                         int position = i;
                         char maincolor = cube.LEFT[i];
                         char sidecolor = sideColor.GetAdjacentColor(cube, "LEFT", i);
 						CheckingEdgesLeft(position, maincolor, sidecolor);
+						threeedges = CheckingSolvedEdges();
+						if (threeedges) break;
 					}
-                    else if (cube.FRONT[i] == 'r' || cube.FRONT[i] == 'b' || cube.FRONT[i] == 'o' || cube.FRONT[i] == 'g')
+                     if (cube.FRONT[i] == 'r' || cube.FRONT[i] == 'b' || cube.FRONT[i] == 'o' || cube.FRONT[i] == 'g')
 					{
 						int position = i;
 						char maincolor = cube.FRONT[i];
 						char sidecolor = sideColor.GetAdjacentColor(cube, "FRONT", i);
 						CheckingEdgesFront(position, maincolor, sidecolor);
+						threeedges = CheckingSolvedEdges();
+						if (threeedges) break;
 					}
 				}
 				threeedges = CheckingSolvedEdges();

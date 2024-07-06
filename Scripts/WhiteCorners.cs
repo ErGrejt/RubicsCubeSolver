@@ -32,46 +32,61 @@ namespace RubicsCube.Scripts
 			bool corners = CheckingSolvedCorners(connectorThis);
 			while (!corners)
 			{
-				for (int i = 8; i > 0; i--)
+				for (int i = 8; i >= 0; i--)
 				{
 					if (cube.DOWN[i] == 'w')
 					{
 						colors = CheckCornersColors("DOWN", i);
 						if (!colors.Contains("y"))
 						{
-							SolveWhiteCornersDown(colors, i);
+							if (!Skip(connector, colors))
+							{
+								SolveWhiteCornersDown(colors, i);
+							}
 						}
 					}
-					else if (cube.BACK[i] == 'w')
+					if (cube.BACK[i] == 'w')
 					{
 						colors = CheckCornersColors("BACK", i);
 						if (!colors.Contains("y"))
 						{
-							SolveWhiteCornersBack(colors, i);
+							if (!Skip(connector, colors))
+							{
+								SolveWhiteCornersBack(colors, i);
+							}
 						}
 					}
-					else if (cube.RIGHT[i] == 'w')
+					if (cube.RIGHT[i] == 'w')
 					{
 						colors = CheckCornersColors("RIGHT", i);
 						if (!colors.Contains("y"))
 						{
-							SolveWhiteCornersRight(colors, i);
+							if (!Skip(connector, colors))
+							{
+								SolveWhiteCornersRight(colors, i);
+							}
 						}
 					}
-					else if (cube.LEFT[i] == 'w')
+					if (cube.LEFT[i] == 'w')
 					{
 						colors = CheckCornersColors("LEFT", i);
 						if (!colors.Contains("y"))
 						{
-							SolveWhiteCornersLeft(colors, i);
+							if (!Skip(connector, colors))
+							{
+								SolveWhiteCornersLeft(colors, i);
+							}
 						}
 					}
-					else if (cube.FRONT[i] == 'w')
+					if (cube.FRONT[i] == 'w')
 					{
 						colors = CheckCornersColors("FRONT", i);
 						if (!colors.Contains("y"))
 						{
-							SolveWhiteCornersFront(colors, i);
+							if (!Skip(connector, colors))
+							{
+								SolveWhiteCornersFront(colors, i);
+							}
 						}
 					}
 				}
@@ -95,7 +110,26 @@ namespace RubicsCube.Scripts
 
 			return count >= 3;
 		}
+		private bool Skip(string connector, string colors)
+		{
+			switch (connector)
+			{
+				case "frontRightEdge":
+					if (colors == "br" || colors == "rb") return true;
+					break;
+				case "frontLeftEdge":
+					if (colors == "gr" || colors == "rg") return true;
+					break;
+				case "backRightEdge":
+					if (colors == "go" || colors == "og") return true;
+					break;
+				case "backLeftEdge":
+					if (colors == "bo" || colors == "ob") return true;
+					break;
 
+			}
+			return false;
+		}
 		private void SolveWhiteCornersFront(string colors, int positon)
 		{
 			colors = TransformColors(colors);
@@ -326,7 +360,7 @@ namespace RubicsCube.Scripts
 					do
 					{
 						LblAlgoritm(connectorThis);
-					} while (cube.UP[upConnector] != 'w' && (CheckCornersColors("UP", upConnector) != receivedColors || CheckCornersColors("UP", upConnector) != new string(receivedColors.Reverse().ToArray())));
+					} while (!(cube.UP[upConnector] == 'w' && (CheckCornersColors("UP", upConnector) == receivedColors || CheckCornersColors("UP", upConnector) == new string(receivedColors.Reverse().ToArray()))));
 					CorrectinWhiteCross();
 				}
 			}

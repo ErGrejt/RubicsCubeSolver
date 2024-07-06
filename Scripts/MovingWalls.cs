@@ -116,7 +116,7 @@ namespace RubicsCube.Scripts
         }
         public void WriteMoves(int number)
         {
-            RemoveMoves();
+           RemoveMoves();
             if(number == 1)
             {
                 CountMoves("Ilość ruchów do ułożenia białego krzyża: ");
@@ -437,7 +437,7 @@ namespace RubicsCube.Scripts
             cube.FRONT[3] = temp[1];
             cube.FRONT[6] = temp[2];
         }
-        //Turn Left Right
+        //Turn Left Left
         private void RotateLeftCounterClockwise(RubikColors cube)
         {
             RotateSideLeft(cube.LEFT);
@@ -451,9 +451,9 @@ namespace RubicsCube.Scripts
             cube.FRONT[3] = cube.DOWN[3];
             cube.FRONT[6] = cube.DOWN[6];
 
-            cube.DOWN[0] = cube.BACK[2];
+            cube.DOWN[0] = cube.BACK[8];
             cube.DOWN[3] = cube.BACK[5];
-            cube.DOWN[6] = cube.BACK[8];
+            cube.DOWN[6] = cube.BACK[2];
 
             cube.BACK[2] = temp[2];
             cube.BACK[5] = temp[1];
