@@ -15,98 +15,62 @@ namespace RubicsCube.Scripts
         //Movings
         public void TurnFrontRight(RubikColors cube)
         {
-            //Console.WriteLine("FRONT W PRAWO");
             moves.Add("TurnFrontRight");
-            countMoves++;
-            //Console.ReadLine();
             RotateFrontClockwise(cube);
         }
         public void TurnFrontLeft(RubikColors cube)
         {
-            //Console.WriteLine("FRONT W LEWO");
             moves.Add("TurnFrontLeft");
-            countMoves++;
-            //Console.ReadLine();
             RotateFrontCounterClockwise(cube);
         }
         public void TurnUpRight(RubikColors cube)
         {
-            //Console.WriteLine("UP W PRAWO");
             moves.Add("TurnUpRight");
-            countMoves++;
-            //Console.ReadLine();
             RotateUpClockwise(cube);
         }
         public void TurnUpLeft(RubikColors cube)
         {
-            //Console.WriteLine("UP W LEWO");
             moves.Add("TurnUpLeft");
-            countMoves++;
-            //Console.ReadLine();
             RotateUpCounterClockwise(cube);
         }
         public void TurnRightRight(RubikColors cube)
         {
-            //Console.WriteLine("PRAWO W PRAWO");
             moves.Add("TurnRightRight");
-            countMoves++;
-            //Console.ReadLine();
             RotateRightClockwise(cube);
         }
         public void TurnRightLeft(RubikColors cube)
         {
-            //Console.WriteLine("PRAWO W LEWO");
             moves.Add("TurnRightLeft");
-            countMoves++;
-            //Console.ReadLine();
             RotateRightCounterClockwise(cube);
         }
         public void TurnLeftRight(RubikColors cube)
         {
-            //Console.WriteLine("LEWO W PRAWO");
             moves.Add("TurnLeftRight");
-            countMoves++;
-            //Console.ReadLine();
             RotateLeftClockwise(cube);
         }
         public void TurnLeftLeft(RubikColors cube)
         {
-            //Console.WriteLine("LEWO W LEWO");
             moves.Add("TurnLeftLeft");
-            countMoves++;
-            //Console.ReadLine();
             RotateLeftCounterClockwise(cube);
         }
         public void TurnBackRight(RubikColors cube)
         {
-            //Console.WriteLine("BACK W PRAWO");
             moves.Add("TurnBackRight");
-            countMoves++;
-            //Console.ReadLine();
             RotateBackClockwise(cube);
         }
         public void TurnBackLeft(RubikColors cube)
         {
-            //Console.WriteLine("BACK W LEWO");
             moves.Add("TurnBackLeft");
-            countMoves++;
-            //Console.ReadLine();
             RotateBackCounterClockwise(cube);
         }
         public void TurnDownRight(RubikColors cube)
         {
-            //Console.WriteLine("DOWN W PRAWO");
             moves.Add("TurnDownRight");
-            countMoves++;
-            //Console.ReadLine();
             RotateDownClockwise(cube);
         }
         public void TurnDownLeft(RubikColors cube)
         {
-            //Console.WriteLine("DOWN W LEWO");
             moves.Add("TurnDownLeft");
-            countMoves++;
-            //Console.ReadLine();
             RotateDownCounterClockwise(cube);
         }
         private void CountMoves(string message)
@@ -117,19 +81,26 @@ namespace RubicsCube.Scripts
         public void WriteMoves(int number)
         {
            RemoveMoves();
-            if(number == 1)
+            if (number == 1)
             {
                 CountMoves("Ilość ruchów do ułożenia białego krzyża: ");
-            } else if(number == 2)
+            }
+            else if (number == 2)
             {
                 CountMoves("Ilość ruchów do ułożenia środkowych 3 krawędzi: ");
-            } else if(number == 3)
+            }
+            else if (number == 3)
             {
-				CountMoves("Ilość ruchów do ułożenia 3 białych narożników: ");
-			} else if(number == 0)
+                CountMoves("Ilość ruchów do ułożenia 3 białych narożników: ");
+            }
+            else if (number == 4)
             {
-				CountMoves("Poprawka krzyż: ");
+				CountMoves("Ilość ruchów do ułożenia żółtego krzyża: ");
 			}
+            else if (number == 0)
+            {
+                CountMoves("Inne: ");
+            }
             for (int i = 0; i < moves.Count; i++)
             {
                 ConsoleWLMoves(moves[i]);

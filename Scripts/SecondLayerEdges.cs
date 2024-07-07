@@ -31,10 +31,75 @@ namespace RubicsCube.Scripts
         {
             CheckEdges();
         }
-
+        public void SolverLastEdgeSecondLayer(string connector)
+        {
+            SolveLastEdge(connector);
+		}
+        private void SolveLastEdge(string connector)
+        {
+			for (int i = 0; i < 9; i++)
+			{
+				if (cube.DOWN[i] == 'r' || cube.DOWN[i] == 'b' || cube.DOWN[i] == 'o' || cube.DOWN[i] == 'g')
+				{
+					int position = i;
+					char maincolor = cube.DOWN[i];
+					char sidecolor = sideColor.GetAdjacentColor(cube, "DOWN", i);
+					CheckingEdgesDown(position, maincolor, sidecolor);
+				}
+			}
+            if (!(cube.FRONT[3] == 'r' && cube.FRONT[5] == 'r' && cube.RIGHT[3] == 'b' && cube.RIGHT[5] == 'b'
+                && cube.BACK[3] == 'o' && cube.BACK[5] == 'o' && cube.LEFT[3] == 'g' && cube.LEFT[5] == 'g'))
+            {
+				int pos = 0;
+				switch (connector)
+				{
+					case "frontRightEdge":
+						pos = 5;
+						char fremain = cube.FRONT[pos];
+						char freside = sideColor.GetAdjacentColor(cube, "FRONT", pos);
+						CheckingEdgesFront(pos, fremain, freside);
+						pos = 3;
+						char fremain2 = cube.RIGHT[pos];
+						char freside2 = sideColor.GetAdjacentColor(cube, "RIGHT", pos);
+						CheckingEdgesRight(pos, fremain2, freside2);
+						break;
+					case "frontLeftEdge":
+						pos = 3;
+						char flemain = cube.FRONT[pos];
+						char fleside = sideColor.GetAdjacentColor(cube, "FRONT", pos);
+						CheckingEdgesFront(pos, flemain, fleside);
+						pos = 5;
+						char flemain2 = cube.LEFT[pos];
+						char fleside2 = sideColor.GetAdjacentColor(cube, "LEFT", pos);
+						CheckingEdgesLeft(pos, flemain2, fleside2);
+						break;
+					case "backRightEdge":
+						pos = 5;
+						char bremain = cube.BACK[pos];
+						char breside = sideColor.GetAdjacentColor(cube, "BACK", pos);
+						CheckingEdgesBack(pos, bremain, breside);
+						pos = 3;
+						char bremain2 = cube.LEFT[pos];
+						char breside2 = sideColor.GetAdjacentColor(cube, "LEFT", pos);
+						CheckingEdgesLeft(pos, bremain2, breside2);
+						break;
+					case "backLeftEdge":
+						pos = 3;
+						char blemain = cube.BACK[pos];
+						char bleside = sideColor.GetAdjacentColor(cube, "BACK", pos);
+						CheckingEdgesBack(pos, blemain, bleside);
+						pos = 5;
+						char blemain2 = cube.RIGHT[pos];
+						char bleside2 = sideColor.GetAdjacentColor(cube, "RIGHT", pos);
+						CheckingEdgesRight(pos, blemain2, bleside2);
+						break;
+				}
+			}
+			_walls.WriteMoves(0);
+		}
         private void CheckEdges()
         {
-            bool threeedges = CheckingSolvedEdges();
+			bool threeedges = CheckingSolvedEdges();
 			while (!threeedges)
             {
 				
