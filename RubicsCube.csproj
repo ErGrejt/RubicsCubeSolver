@@ -51,6 +51,7 @@
     <Compile Include="Scripts\MovingWalls.cs" />
     <Compile Include="Scripts\SecondLayerEdges.cs" />
     <Compile Include="Scripts\WhiteCorners.cs" />
+    <Compile Include="Scripts\YellowCorners.cs" />
     <Compile Include="Scripts\YellowCross.cs" />
   </ItemGroup>
   <ItemGroup>

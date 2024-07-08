@@ -19,6 +19,7 @@ namespace RubicsCube
 			SecondLayerEdges secondLayerEdges = new SecondLayerEdges();
 			WhiteCorners whiteCorners = new WhiteCorners();
 			YellowCross yellowCross = new YellowCross();
+			YellowCorners yellowCorners = new YellowCorners();
 			Console.WriteLine(@"Witaj w programie do układania kostki rubika!
 Najpierw musisz podać w jakim stanie jest Twoja kostka.
 Aby to zrobić musisz użyć liter w,g,b,r,y,o:
@@ -39,7 +40,8 @@ Kliknij 'enter' aby kontynuować");
 			whiteCorners.SolveWhiteCorners(edge);
 			secondLayerEdges.SolverLastEdgeSecondLayer(edge);
 			yellowCross.SolveYellowCross();
-			Console.WriteLine("Koniec");
+			yellowCorners.SolveCornersLastStep(edge);
+			Console.WriteLine("Kostka ułożona :)");
 			Console.ReadLine();
             Console.Clear();
 			input.ReadWall("FRONT");

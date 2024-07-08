@@ -96,7 +96,10 @@ namespace RubicsCube.Scripts
             else if (number == 4)
             {
 				CountMoves("Ilość ruchów do ułożenia żółtego krzyża: ");
-			}
+			} else if(number == 5)
+            {
+                CountMoves("Ilość ruchów do ułożenia narożników: ");
+            }
             else if (number == 0)
             {
                 CountMoves("Inne: ");

@@ -576,7 +576,7 @@ namespace RubicsCube.Scripts
 					break;
 			}
 		}
-		private string TransformColors(string colors) 
+		public string TransformColors(string colors) 
 		{
 			if(colors == "rb") return "br";
 			if(colors == "rg") return "gr";
@@ -606,7 +606,7 @@ namespace RubicsCube.Scripts
 					break;
 			}
 		}
-		private string CheckCornersColors(string face, int position)
+		public string CheckCornersColors(string face, int position)
 		{
 			switch (face)
 			{
@@ -668,7 +668,7 @@ namespace RubicsCube.Scripts
 			}
 			return null;
 		}
-		private void LblAlgoritm(string connector)
+		public void LblAlgoritm(string connector)
 		{
 			switch (connector)
 			{
