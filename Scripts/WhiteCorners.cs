@@ -89,6 +89,17 @@ namespace RubicsCube.Scripts
 							}
 						}
 					}
+					if (cube.UP[i] == 'w')
+					{
+						colors = CheckCornersColors("UP", i);
+						if (!colors.Contains("y"))
+						{
+							if (!Skip(connector, colors))
+							{
+								SolveWhiteCornersUp(colors, i);
+							}
+						}
+					}
 				}
 				corners = CheckingSolvedCorners(connectorThis);
 			}
@@ -343,8 +354,54 @@ namespace RubicsCube.Scripts
 			}
 			LogicLblMoving(number, receivedColors);
 		}
+		private void SolveWhiteCornersUp(string colors, int positon)
+		{
+			colors = TransformColors(colors);
+			int number = 0;
+			string receivedColors = "xd";
+			switch (positon)
+			{
+				case 0:
+					number = -1;
+					if(colors != "go") number = 1;
+					break;
+				case 2:
+					number = -1;
+					if (colors != "bo") number = 2;
+					break;
+				case 6:
+					number = -1;
+					if (colors != "gr") number = 3;
+					break;
+				case 8:
+					number = -1;
+					if (colors != "br") number = 4;
+					break;
+			}
+			switch (colors)
+			{
+				case "br":
+					cornerUpCorr = 4;
+					receivedColors = "br";
+					break;
+				case "gr":
+					cornerUpCorr = 3;
+					receivedColors = "gr";
+					break;
+				case "go":
+					cornerUpCorr = 1;
+					receivedColors = "go";
+					break;
+				case "bo":
+					cornerUpCorr = 2;
+					receivedColors = "bo";
+					break;
+			}
+			LogicLblMoving(number, receivedColors);
+		}
 		private void LogicLblMoving(int number, string receivedColors)
 		{
+			if (number == -1) return;
 			if (number != 0)
 			{
 				TurnUpToConnector(number);
