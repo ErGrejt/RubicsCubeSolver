@@ -43,26 +43,6 @@ Kliknij 'enter' aby kontynuować");
 			yellowCorners.SolveCornersLastStep(edge);
 			Console.WriteLine("Kostka ułożona :)");
 			Console.ReadLine();
-            Console.Clear();
-			input.ReadWall("FRONT");
-			Console.ReadLine();
-			Console.Clear();
-			input.ReadWall("BACK");
-			Console.ReadLine();
-			Console.Clear();
-			input.ReadWall("UP");
-			Console.ReadLine();
-			Console.Clear();
-			input.ReadWall("DOWN");
-			Console.ReadLine();
-			Console.Clear();
-			input.ReadWall("LEFT");
-			Console.ReadLine();
-			Console.Clear();
-			input.ReadWall("RIGHT");
-			Console.ReadLine();
-			Console.Clear();
-
 		}
 	}
 }
